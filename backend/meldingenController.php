@@ -8,6 +8,15 @@ $type = $_POST['type'];
 
 echo $attractie . " / " . $capaciteit . " / " . $melder . " / " $type;
 
+if(isset($_POST['prioriteit']))
+{
+    $prioriteit = true;
+}
+else
+{
+    $prioriteit = false;
+}
+
 //1. Verbinding
 require_once 'conn.php';
 
