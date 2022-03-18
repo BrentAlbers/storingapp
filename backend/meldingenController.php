@@ -1,40 +1,64 @@
 <?php
 
 //Variabelen vullen
+
+
 $attractie = $_POST['attractie'];
-$capaciteit = $_POST['capaciteit']; 
-$melder = $_POST['melder'];
+if(empty($_POST['attractie']))
+{
+    $errors[]="Vul de attractie-naam in.";
+}
+
+$capaciteit = $_POST['capaciteit'];
+if(is_numeric($_POST['capaciteit']))
+{
+    $errors[]="Vul een geldig getal in in.";
+} 
 $type = $_POST['type'];
-
-echo $attractie . " / " . $capaciteit . " / " . $melder . " / " $type;
-
+if(empty($_POST['type']))
+{
+    $errors[]="Vul het type in.";
+}
 if(isset($_POST['prioriteit']))
 {
-    $prioriteit = true;
+    $prioriteit = True;
 }
 else
 {
-    $prioriteit = false;
+    $prioriteit = False;
+}
+$melder = $_POST['melder'];
+if(empty($_POST['melder']))
+{
+    $errors[]="Vul naam in.";
+}
+$overig = $_POST['overig'];
+
+if(isset($errors))
+{
+    var_dump($errors);
+    die();
 }
 
 //1. Verbinding
 require_once 'conn.php';
 
+
 //2. Query
-$query = "INSERT INTO meldingen (attractie, capaciteit, melder, type)
-VALUES(:attractie, :capaciteit, :melder, :type);
-//3. Prepare
+$query = "INSERT INTO meldingen (attractie, capaciteit, melder, type, overige_info, prioriteit)
+VALUES(:attractie, :capaciteit, :melder, :type, :overige_info, :prioriteit)";
+
 $statement = $conn->prepare($query);
-//4. Execute
+
 $statement->execute([
     ":attractie" => $attractie,
     ":capaciteit" => $capaciteit,
+    ":prioriteit" => $prioriteit,
     ":melder" => $melder,
     ":type" => $type,
+    ":overige_info" => $overig,  
 ]);
 
-$type = $_post['type']
 
-echo $type;
 
 header("Location:../meldingen/index.php?msg=Meldingopgeslagen");
