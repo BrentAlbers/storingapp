@@ -10,7 +10,7 @@ if(empty($_POST['attractie']))
 }
 
 $capaciteit = $_POST['capaciteit'];
-if(is_numeric($_POST['capaciteit']))
+if(!is_numeric($_POST['capaciteit']))
 {
     $errors[]="Vul een geldig getal in in.";
 } 
