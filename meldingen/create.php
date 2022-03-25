@@ -24,11 +24,11 @@
                 <!-- hier komt een dropdown -->
                 <select name="type" id="type">
                     <option value="">-kies een type-</option>
-                    <option value="A">achtbaan</option>
-                    <option value="B">kinder</option>
-                    <option value="C">water</option>
-                    <option value="D">horeca</option>
-                    <option value="E">show</option>
+                    <option value="achtbaan">achtbaan</option>
+                    <option value="kinder">kinder</option>
+                    <option value="water">water</option>
+                    <option value="horeca">horeca</option>
+                    <option value="show">show</option>
                 </select>
             </div>
             <div class="form-group">

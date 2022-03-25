@@ -20,20 +20,47 @@
         } ?>
 
         <?php
-         require_once '../backend/conn.php';
-         $query = "SELECT * FROM meldingen";
-         $statement = $conn->prepare($query);
-         $statement->execute();
-         $meldingen = $statement->fetchAll(PDO::FETCH_ASSOC);
+            require_once '../backend/conn.php';
+            $query = "SELECT * FROM meldingen";
+            $statement = $conn->prepare($query);
+            $statement->execute();
+            $meldingen = $statement->fetchAll(PDO::FETCH_ASSOC);
          ?>
 
-        <?php 
-        foreach ($meldingen as $melding)
-        {
-            echo "<p>" .$melding['attractie'] . ", type: " . $melding['type'] ."</p>";
-            
-        }
-        ?>
+        <table>
+            <tr>
+                <th>Attractie</th>
+                <th>Type</th>
+                <th>prioriteit</th>
+                <th>Melder</th>
+                <th>overige_info</th>
+            </tr>
+            <?php foreach ($meldingen as $melding):?>
+                <tr>
+                    <td><?php echo $melding['attractie']?></td>
+                    <td><?php echo $melding['type']?></td>
+                    <td><?php
+                    if ($melding['prioriteit'] == 1)
+                    {
+                        echo "ja";
+                    }
+                    else
+                    {
+                        echo "nee";
+                    }
+                    
+                    ?></td>
+                    <td><?php echo $melding['melder']?></td>
+                    <td><?php echo $melding['overige_info']?></td>
+                </tr>
+            <?php endforeach; ?>
+
+        </table>
+
+
+
+
+
 
     </div>  
 
