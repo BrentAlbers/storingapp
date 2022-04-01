@@ -14,6 +14,10 @@
         <h1>Nieuwe melding</h1>
 
         <form action="../backend/meldingenController.php" method="POST">
+            <div class="form-group">
+                <label for="create">create</label>
+                <input type="hidden" name="create">
+            </div>
         
             <div class="form-group">
                 <label for="attractie">Naam attractie:</label>

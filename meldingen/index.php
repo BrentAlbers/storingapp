@@ -34,6 +34,7 @@
                 <th>prioriteit</th>
                 <th>Melder</th>
                 <th>overige_info</th>
+                <th>Aanpassen</th>
             </tr>
             <?php foreach ($meldingen as $melding):?>
                 <tr>
@@ -52,6 +53,7 @@
                     ?></td>
                     <td><?php echo $melding['melder']?></td>
                     <td><?php echo $melding['overige_info']?></td>
+                    <td><a href="edit.php?id=<?php echo $melding['id']?>">aanpassen</a></td>
                 </tr>
             <?php endforeach; ?>
 
